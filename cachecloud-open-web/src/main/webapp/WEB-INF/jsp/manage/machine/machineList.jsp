@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/manage/commons/taglibs.jsp"%>
+<script type="text/javascript" src="/resources/js/bytesformat.js"></script>
+
 <div class="page-container">
 	<div class="page-content">
 		<div class="row">
@@ -38,8 +40,8 @@
 						<table class="table table-striped table-bordered table-hover" id="tableDataList">
 							<thead>
 								<tr>
-									<th>ip</th>
-									<th>内存使用率</th>
+									<th>IP</th>
+									<th>主机内存使用率</th>
 									<th>已分配内存</th>
 									<th>CPU使用率</th>
 									<th>网络流量</th>
@@ -80,8 +82,8 @@
 		                                                             role="progressbar" aria-valuenow="${machine.memoryUsageRatio}" aria-valuemax="100"
 		                                                             aria-valuemin="0" style="width: ${machine.memoryUsageRatio}%">
 		                                                    <label style="color: #000000">
-		                                                        <fmt:formatNumber value="${((machine.memoryTotal-machine.memoryFree)/1024/1024/1024)}" pattern="0.00"/>G&nbsp;&nbsp;Used/
-		                                                        <fmt:formatNumber value="${ machine.memoryTotal/1024/1024/1024}" pattern="0.00"/>G&nbsp;&nbsp;Total
+		                                                        <span class="format-bytes"><fmt:formatNumber value="${machine.memoryTotal-machine.memoryFree}" pattern="0.00"/></span>&nbsp;&nbsp;Used/
+																<span class="format-bytes"><fmt:formatNumber value="${machine.memoryTotal}" pattern="0.00"/></span>&nbsp;&nbsp;Total
 		                                                    </label>
 		                                              	</div>
 		                                             </div>
@@ -111,8 +113,8 @@
 	                                                         role="progressbar" aria-valuenow="${fmtMemoryAllocatedRatio}" aria-valuemax="100"
 	                                                         aria-valuemin="0" style="width: ${fmtMemoryAllocatedRatio}%">
 	                                                        <label style="color: #000000">
-	                                                            <fmt:formatNumber value="${((machine.memoryAllocated)/1024)}" pattern="0.00"/>G&nbsp;&nbsp;Used/
-	                                                            <fmt:formatNumber value="${ machine.memoryTotal/1024/1024/1024}" pattern="0.00"/>G&nbsp;&nbsp;Total
+	                                                            <span class="format-bytes"><fmt:formatNumber value="${(machine.memoryAllocated)*1024*1024}" pattern="0.00"/></span>&nbsp;&nbsp;Allocated/
+	                                                            <span class="format-bytes"><fmt:formatNumber value="${machine.memoryTotal}" pattern="0.00"/></span>&nbsp;&nbsp;Total
 	                                                        </label>
 	                                                    </div>
 	                                                </div>

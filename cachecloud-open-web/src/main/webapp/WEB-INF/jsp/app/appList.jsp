@@ -6,6 +6,7 @@
 <head>
     <title>CacheCloud应用列表</title>
     <jsp:include page="/WEB-INF/include/head.jsp"/>
+	<script type="text/javascript" src="/resources/js/bytesformat.js"></script>
     <script type="text/javascript">
   	//改变内存阀值
     function cleanAppData(appId){
@@ -26,8 +27,8 @@
             	appCleanDataBtn.disabled = false;
             }
          );
-    }
-    </script>
+    };
+	</script>
 </head>
 <body role="document">
 <div class="container">
@@ -40,23 +41,23 @@
                 <h4>全局信息</h4>
             </div>
             <table class="table table-striped table-hover">
+				<thead>
+					<th>总应用数</th>
+					<th>已使用内存</th>
+					<th>总申请内存</th>
+				</thead>
                 <tbody>
-                <tr>
-                    <td>总应用数</td>
-                    <td>${totalApps}个 </td>
-                    <td>总申请内存</td>
-                    <td>
-                    	<fmt:formatNumber value="${totalApplyMem / 1024.0}" pattern="0.00"/>G
-                    </td>
-                </tr>
-                <tr>
-                    <td>已使用内存</td>
-                    <td>
-                    	<fmt:formatNumber value="${totalUsedMem / 1024.0}" pattern="0.00"/>G
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
+					<tr>
+						<td>${totalApps}个 </td>
+						<td>
+							<%--<fmt:formatNumber value="${totalUsedMem / 1024.0}" pattern="0.00"/>G--%>
+							<span class="format-bytes">${totalUsedMem}</span>
+						</td>
+						<td>
+							<%--<fmt:formatNumber value="${totalApplyMem / 1024.0}" pattern="0.00"/>G--%>
+							<span class="format-bytes">${totalApplyMem}</span>
+						</td>
+					</tr>
                 </tbody>
             </table>
         </div>
@@ -175,14 +176,14 @@
 	            <table class="table table-striped table-hover" style="margin-top: 0px">
 	                <thead>
 		                <tr>
-		                    <td>应用ID</td>
-		                    <td>应用名</td>
-		                    <td>应用类型</td>
-		                    <td>内存详情</td>
-		                    <td>命中率</td>
-		                    <td>已运行时间</td>
-		                    <td>申请状态</td>
-		                    <td>操作</td>
+		                    <th>应用ID</th>
+		                    <th>应用名</th>
+		                    <th>应用类型</th>
+		                    <th>内存详情</th>
+		                    <th>命中率</th>
+		                    <th>已运行时间</th>
+		                    <th>申请状态</th>
+		                    <th>操作</th>
 		                </tr>
 	                </thead>
 	                <tbody>
@@ -229,7 +230,7 @@
 											role="progressbar" aria-valuenow="${appDetail.memUsePercent}" aria-valuemax="100"
 											aria-valuemin="0" style="width: ${appDetail.memUsePercent}%">
 											<label style="color: #000000">
-												<fmt:formatNumber value="${appDetail.mem * appDetail.memUsePercent / 100 / 1024}" pattern="0.00"/>G&nbsp;&nbsp;Used/<fmt:formatNumber value="${appDetail.mem / 1024 * 1.0}" pattern="0.00"/>G&nbsp;&nbsp;Total
+												<span class="format-bytes"><fmt:formatNumber value="${appDetail.mem * appDetail.memUsePercent / 100}" pattern="0.00"/></span>&nbsp;&nbsp;Used/<span class="format-bytes"><fmt:formatNumber value="${appDetail.mem * 1.0}" pattern="0.00"/></span>&nbsp;&nbsp;Total
 											</label>
 										</div>
 									</div>

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/manage/commons/taglibs.jsp"%>
+<script type="text/javascript" src="/resources/js/bytesformat.js"></script>
 
 <div class="container">
     <div class="row">
@@ -43,7 +44,7 @@
                 </tr>
                 <tr>
                     <td>内存空间</td>
-                    <td><fmt:formatNumber value="${appDetail.mem / 1024 * 1.0}" pattern="0.00"/>G</td>
+					<td class="format-bytes"><fmt:formatNumber value="${appDetail.mem * 1.0}" pattern="0.00"/></td>
                     <td>分布机器数</td>
                     <td>${appDetail.machineNum}</td>
                 </tr>

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ include file="/WEB-INF/jsp/manage/commons/taglibs.jsp"%>
+<script type="text/javascript" src="/resources/js/bytesformat.js"></script>
 
 <script type="text/javascript">
 var startDate = '${startDate}';
@@ -22,7 +23,6 @@ Highcharts.setOptions({
 			'#492970', '#804000', '#f28f43', '#77a1e5',
 			'#c42525', '#a6c96a' ]
 });
-
 </script>
 
 <div class="container">
@@ -71,7 +71,7 @@ Highcharts.setOptions({
 											aria-valuemin="0" style="width: ${appDetail.memUsePercent}%">				                    		</c:otherwise>
 		                    	</c:choose>
 									<label style="color: #000000">
-										<fmt:formatNumber value="${appDetail.mem  * appDetail.memUsePercent / 100 / 1024}" pattern="0.00"/>G&nbsp;&nbsp;Used/<fmt:formatNumber value="${appDetail.mem / 1024 * 1.0}" pattern="0.00"/>G&nbsp;&nbsp;Total
+										<span class="format-bytes"><fmt:formatNumber value="${appDetail.mem * appDetail.memUsePercent / 100}" pattern="0.00"/></span>&nbsp;&nbsp;Used/<span class="format-bytes"><fmt:formatNumber value="${appDetail.mem * 1.0}" pattern="0.00"/></span>&nbsp;&nbsp;Total
 									</label>
 								</div>
 							</div>

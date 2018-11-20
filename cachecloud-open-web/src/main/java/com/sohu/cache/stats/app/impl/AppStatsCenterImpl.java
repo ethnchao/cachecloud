@@ -301,7 +301,9 @@ public class AppStatsCenterImpl implements AppStatsCenter {
                 hits += instanceStats.getHits();
                 miss += instanceStats.getMisses();
                 if (isMaster) {
-                    resultVO.setMem(resultVO.getMem() + instanceInfo.getMem());
+                    // 使用instanceInfo.getMem()会导致统计的是配置值，而不是实际值
+//                    resultVO.setMem(resultVO.getMem() + instanceInfo.getMem());
+                    resultVO.setMem(resultVO.getMem() + instanceStats.getMaxMemory());
                     resultVO.setCurrentMem(resultVO.getCurrentMem() + usedMemoryMB);
                     resultVO.setCurrentObjNum(resultVO.getCurrentObjNum() + instanceStats.getCurrItems());
                     resultVO.setMasterNum(resultVO.getMasterNum() + 1);

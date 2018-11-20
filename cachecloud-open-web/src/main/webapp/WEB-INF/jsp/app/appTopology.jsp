@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/manage/commons/taglibs.jsp"%>
+<script type="text/javascript" src="/resources/js/bytesformat.js"></script>
 
 <div class="row">
     <div class="page-header">
@@ -52,7 +53,7 @@
                                     style="width: ${(instanceStatsMap[instanceStatsMapKey]).memUsePercent}%">
                                     
 	                               	<label style="color: #000000">
-	                                   <fmt:formatNumber value="${(instanceStatsMap[instanceStatsMapKey]).usedMemory / 1024 / 1024 / 1024}" pattern="0.00"/>G&nbsp;&nbsp;Used/<fmt:formatNumber value="${(instanceStatsMap[instanceStatsMapKey]).maxMemory / 1024 / 1024 / 1024}" pattern="0.00"/>G&nbsp;&nbsp;Total
+                                         <span class="format-bytes"><fmt:formatNumber value="${(instanceStatsMap[instanceStatsMapKey]).usedMemory}" pattern="0.00"/></span>&nbsp;&nbsp;Used/<span class="format-bytes"><fmt:formatNumber value="${(instanceStatsMap[instanceStatsMapKey]).maxMemory}" pattern="0.00"/></span>&nbsp;&nbsp;Total
 	                               	</label>
                                 </div>
                          </div>

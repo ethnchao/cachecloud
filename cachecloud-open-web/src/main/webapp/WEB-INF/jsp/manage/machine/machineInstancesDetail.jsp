@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/manage/commons/taglibs.jsp"%>
+<script type="text/javascript" src="/resources/js/bytesformat.js"></script>
+
 <script type="text/javascript">
 	function startInstance(appId, instanceId){
 		if(confirm("确认要开启"+instanceId+"实例吗?")){
@@ -68,16 +70,16 @@
 		                <table class="table table-striped table-bordered table-hover" id="tableDataList">
 		                    <thead>
 		                    <tr>
-		                        <td>ID</td>
+		                        <th>实例ID</th>
 		                        <th>应用ID</th>
 		                        <th>应用名</th>
 		                        <th>负责人</th>
-		                        <td>服务器ip:port</td>
-		                        <td>实例空间使用情况</td>
-		                        <td>连接数</td>
-		                        <td>角色</td>
-		                        <td>实例所在机器信息可用内存(G)</td>
-		                        <td>实例操作</td>
+		                        <th>服务器ip:port</th>
+		                        <th>实例空间使用情况</th>
+		                        <th>连接数</th>
+		                        <th>角色</th>
+		                        <th>实例所在机器信息可用内存(G)</th>
+		                        <th>实例操作</th>
 		                    </tr>
 		                    </thead>
 		                    <tbody>
@@ -114,19 +116,17 @@
 		                                         aria-valuemin="0"
 		                                         style="width: ${(instanceStatsMap[instanceStatsMapKey]).memUsePercent }%">
 		                                            <label style="color: #000000">
-		                                                <fmt:formatNumber
-		                                                        value="${(instanceStatsMap[instanceStatsMapKey]).usedMemory / 1024 / 1024 / 1024}"
-		                                                        pattern="0.00"/>G&nbsp;&nbsp;Used/<fmt:formatNumber value="${(instanceStatsMap[instanceStatsMapKey]).maxMemory / 1024 / 1024 / 1024}" pattern="0.00"/>G&nbsp;&nbsp;Total
+		                                                <span class="format-bytes"><fmt:formatNumber value="${(instanceStatsMap[instanceStatsMapKey]).usedMemory}"
+		                                                        pattern="0.00"/></span>&nbsp;&nbsp;Used/
+														<span class="format-bytes"><fmt:formatNumber value="${(instanceStatsMap[instanceStatsMapKey]).maxMemory}"
+																pattern="0.00"/></span>&nbsp;&nbsp;Total
 		                                            </label>
 		                                     </div>
 		                                </div>
 		                            </td>
-                            		   <td>${(instanceStatsMap[instanceStatsMapKey]).currConnections}</td>
-                            		   <td>${instance.roleDesc}</td>
-		                            <td><fmt:formatNumber
-		                                    value="${(machineCanUseMem[instance.ip])/1024/1024/1024}"
-		                                    pattern="0.00"/>
-		                            </td>
+								    <td>${(instanceStatsMap[instanceStatsMapKey]).currConnections}</td>
+								    <td>${instance.roleDesc}</td>
+		                            <td class="format-bytes"><fmt:formatNumber value="${(machineCanUseMem[instance.ip])}" pattern="0.00"/></td>
 		                            <td>
                                         <c:choose>
                                             <c:when test="${instance.status == 2}">

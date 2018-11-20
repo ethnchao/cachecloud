@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/jsp/manage/commons/taglibs.jsp" %>
+<script type="text/javascript" src="/resources/js/bytesformat.js"></script>
+
 <div class="page-container">
     <div class="page-content">
         <div class="row">
@@ -24,44 +26,42 @@
                             <table class="table table-striped table-bordered table-hover">
                                 <tr>
                                     <td>机器总内存</td>
-                                    <td><fmt:formatNumber value="${totalMachineMem/1024/1024/1024}" pattern="0.00"/>G
-                                    </td>
+                                    <td class="format-bytes"><fmt:formatNumber value="${totalMachineMem}" pattern="0.00"/></td>
                                     <td>机器空闲内存</td>
-                                    <td><fmt:formatNumber value="${totalFreeMachineMem/1024/1024/1024}" pattern="0.00"/>G</td>
+                                    <td class="format-bytes"><fmt:formatNumber value="${totalFreeMachineMem}" pattern="0.00"/></td>
                                     <td>实例总内存</td>
-                                    <td><fmt:formatNumber value="${totalInstanceMem/1024/1024/1024}" pattern="0.00"/>G
-                                    </td>
+                                    <td class="format-bytes"><fmt:formatNumber value="${totalInstanceMem}" pattern="0.00"/></td>
                                     <td>实例总使用内存</td>
-                                    <td><fmt:formatNumber value="${totalUseInstanceMem/1024/1024/1024}" pattern="0.00"/>G</td>
+                                    <td class="format-bytes"><fmt:formatNumber value="${totalUseInstanceMem}" pattern="0.00"/></td>
                                 </tr>
                                 <tr>
                                     <td>应用总数</td>
                                     <td>${totalApps}</td>
                                     <td>运行中应用数</td>
                                     <td>${totalRunningApps}</td>
-                                    <td>应用总申请内存</td>
-                                    <td><fmt:formatNumber value="${totalApplyMem/1024}" pattern="0.00"/>G</td>
+                                    <td>应用可使用内存</td>
+                                    <td class="format-bytes"><fmt:formatNumber value="${totalApplyMem}" pattern="0.00"/></td>
                                     <td>应用已使用内存</td>
-                                    <td><fmt:formatNumber value="${totalUsedMem/1024}" pattern="0.00"/>G</td>
+                                    <td class="format-bytes"><fmt:formatNumber value="${totalUsedMem}" pattern="0.00"/></td>
                                 </tr>
 
                             </table>
                             <br/>
-                            <h3>集群当前可对外提供空间：<fmt:formatNumber
-                                value="${(totalFreeMachineMem-(totalInstanceMem-totalUseInstanceMem))/1024/1024/1024}"
-                                pattern="0.00"/>G</h3>
+                            <h3>集群当前可对外提供空间：<span class="format-bytes"><fmt:formatNumber
+                                value="${(totalFreeMachineMem-(totalInstanceMem-totalUseInstanceMem))}"
+                                pattern="0.00"/></span></h3>
                         </div>
                         <table class="table table-striped table-bordered table-hover" id="tableDataList">
                             <thead>
                             <tr>
-                                <td>应用ID</td>
-                                <td>应用名</td>
-                                <td>应用类型</td>
-                                <td>内存详情</td>
-                                <td>命中率</td>
-                                <td>已运行时间(天)</td>
-                                <td>申请状态</td>
-                                <td>操作</td>
+                                <th>应用ID</th>
+                                <th>应用名</th>
+                                <th>应用类型</th>
+                                <th>内存详情</th>
+                                <th>命中率</th>
+                                <th>已运行时间(天)</th>
+                                <th>申请状态</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -108,9 +108,9 @@
                                                  aria-valuemax="100"
                                                  aria-valuemin="0" style="width: ${appDetail.memUsePercent}%">
                                                     <label style="color: #000000">
-                                                        <fmt:formatNumber
-                                                                value="${appDetail.mem  * appDetail.memUsePercent / 100 / 1024}"
-                                                                pattern="0.00"/>G&nbsp;&nbsp;Used/<fmt:formatNumber value="${appDetail.mem / 1024 * 1.0}" pattern="0.00"/>G&nbsp;&nbsp;Total
+                                                        <span class="format-bytes"><fmt:formatNumber
+                                                                value="${appDetail.mem  * appDetail.memUsePercent / 100}"
+                                                                pattern="0.00"/></span>&nbsp;&nbsp;Used/<span class="format-bytes"><fmt:formatNumber value="${appDetail.mem * 1.0}" pattern="0.00"/></span>&nbsp;&nbsp;Total
                                                     </label>
                                             </div>
                                         </div>
