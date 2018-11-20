@@ -29,7 +29,7 @@
             });
         });
     </script>
-    <center><h4><font color='red'>注意：非测试应用只可以执行只读命令，如有需要清理数据请联系管理员！</font></h4></center>
+    <div style="color: red;">注意：非测试应用只可以执行只读命令，如有需要清理数据请联系管理员！</div>
 
     <input type="hidden" id="appId" value="${appId}">
 
