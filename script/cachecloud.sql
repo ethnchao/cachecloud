@@ -890,6 +890,7 @@ insert into system_config(config_key,config_value,info,status,order_id) values('
 insert into system_config(config_key,config_value,info,status,order_id) values('cachecloud.machine.stats.cron.minute','1','机器性能统计周期(分钟)',1,30);
 
 insert into system_config(config_key,config_value,info,status,order_id) values('cachecloud.nmon.dir','/opt/cachecloud','nmon安装目录',1,31);
+insert into system_config(config_key, config_value, info, STATUS, order_id) values ('cachecloud.redis.base.dir', '/opt/cachecloud/redis/src', 'redis安装目录', 1, 32);
 
 DROP TABLE IF EXISTS `app_data_migrate_status`;
 CREATE TABLE `app_data_migrate_status` (

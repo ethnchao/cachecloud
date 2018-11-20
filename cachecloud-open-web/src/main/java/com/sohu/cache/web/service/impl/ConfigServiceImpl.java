@@ -143,6 +143,10 @@ public class ConfigServiceImpl implements ConfigService {
         //cachecloud根目录
         ConstUtils.CACHECLOUD_BASE_DIR = MapUtils.getString(configMap, "cachecloud.base.dir", ConstUtils.DEFAULT_CACHECLOUD_BASE_DIR);
         logger.info("{}: {}", "ConstUtils.CACHECLOUD_BASE_DIR", ConstUtils.CACHECLOUD_BASE_DIR);
+
+        //cachecloud redis 根目录
+        ConstUtils.CACHECLOUD_REDIS_BASE_DIR = MapUtils.getString(configMap, "cachecloud.redis.base.dir", ConstUtils.DEFAULT_CACHECLOUD_REDIS_BASE_DIR);
+        logger.info("{}: {}", "ConstUtils.CACHECLOUD_REDIS_BASE_DIR", ConstUtils.CACHECLOUD_REDIS_BASE_DIR);
         
         //应用客户端连接报警阀值
         ConstUtils.APP_CLIENT_CONN_THRESHOLD = MapUtils.getIntValue(configMap, "cachecloud.app.client.conn.threshold", ConstUtils.DEFAULT_APP_CLIENT_CONN_THRESHOLD);

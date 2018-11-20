@@ -228,6 +228,12 @@ public class ConstUtils {
      */
     public static String DEFAULT_CACHECLOUD_BASE_DIR = "/opt";
     public static String CACHECLOUD_BASE_DIR = DEFAULT_CACHECLOUD_BASE_DIR;
+
+    /**
+     * cachecloud redis根目录
+     */
+    public static String DEFAULT_CACHECLOUD_REDIS_BASE_DIR = "/opt";
+    public static String CACHECLOUD_REDIS_BASE_DIR = DEFAULT_CACHECLOUD_REDIS_BASE_DIR;
     
     /**
      * MNON_DIR根目录
